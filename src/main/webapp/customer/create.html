@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head(title)">
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">Create Customer <a th:href="@{/home}">List Customers</a></div>
+        <div class="card-body">
+            <th:block th:if="${message}">
+                <div class="alert alert-success" th:text="${message}"></div>
+            </th:block>
+            <form th:action="@{/create-customer}" th:object="${customer}" method="post">
+                <div class="row mb-3">
+                    <label th:for="*{firstName}" class="col-form-label col-md-2">First Name:</label>
+                    <div class="col-md-10">
+                        <input type="text" th:field="*{firstName}" id="firstName" name="firstName" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label th:for="*{lastName}" class="col-form-label col-md-2">Last Name:</label>
+                    <div class="col-md-10">
+                        <input type="text" th:field="*{lastName}" id="lastName" name="lastName" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Create customer</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
